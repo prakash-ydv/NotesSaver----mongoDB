@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NotesSaver</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div
+      class="min-h-screen bg-zinc-900 flex text-white flex flex-col items-center p-10"
+    >
+      <h1 class="text-yellow-500 font-bold text-2xl mb-2">NotesSaver</h1>
+
+      <form class="flex flex-col text-sm gap-2" action="/create" method="POST">
+        <input
+          class="bg-zinc-800 p-1 rounded-md w-78 outline-none font-mono text-zinc-400"
+          type="text"
+          placeholder="Enter Title"
+          name="title"
+        />
+
+        <textarea
+          class="bg-zinc-800 text-zinc-400 font-mono rounded-md p-1 resize-none outline-none min-h-42"
+          name="disc"
+          placeholder="Enter Description"
+        ></textarea>
+
+        <input
+          class="mt-4 bg-green-500 px-4 py-2 rounded-md h-8 w-20 font-bold uppercase mx-auto"
+          type="submit"
+        />
+      </form>
+
+      <div class="mt-15 w-92 flex flex-wrap gap-2 md:w-3/4 mx-auto md:justify-evenly">
+        <% if(data.length>0){ %> 
+            <% data.forEach((data)=>{ %>
+
+                <div class="bg-zinc-800 p-2 w-42 rounded-md">
+                <h1 class="uppercase truncate text-zinc-200 font-mono text-zinc-400">
+                    <%= data.title %></h1>
+
+                    <div class="w-full flex items-center justify-evenly mt-5">
+                        <a title="read" class="text-blue-500 text-xs" href=" notes/<%= data.title %>"><img class="h-3" src="/png/read.png" alt="read"></a>
+
+                        <a title="edit" class="text-xs text-red-500" href="/edit/<%= data.title %>"
+                        ><img class="h-3" src="/png/edit.png" alt="edit"></a
+                        >
+
+                        <a title="delete" class="text-xs text-orange-500" href="/delete/<%= data.title %>"><img class="h-3" src="/png/trash.png" alt="edit"></a>
+
+
+                    </div>
+                </div>
+            <%})%>
+
+        <% }else{ %>
+            <p class="text-zinc-600 mx-auto">No Task Found</p>
+        <% } %>
+
+      </div>
+    </div>
+  </body>
+</html>
