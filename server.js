@@ -21,9 +21,9 @@ app.get('/', async(req,res)=>{
 
 // create new note
 app.post('/create', async (req,res)=>{
-
+    const trimmedTitle = req.body.title.trim();
     notesSchema.create({
-        title:req.body.title,
+        title:trimmedTitle,
         desc:`${req.body.disc}`
     })
     res.redirect('/')
@@ -40,9 +40,28 @@ app.get('/delete/:notesName', async (req,res)=>{
 
 // read notes
 app.get('/notes/:notesName', async (req,res)=>{
-    await notesSchema.findOne({title: `${req.params.notesName}`})
+    let data = await notesSchema.findOne({title: `${req.params.notesName}`})
+    res.render('Notes', {data})
+})
+
+// edit notes
+app.get('/edit/:notesName', async (req,res)=>{
+    let data = await notesSchema.findOne({title: `${req.params.notesName}`})
+    res.render('Edit', {data})
     
-    res.render('Notes')
+})
+
+// save edited note
+
+app.post('/save/:notesName', async(req,res)=>{
+    await notesSchema.replaceOne({title:req.params.notesName},{
+        title:req.body.newTitle,
+        desc: req.body.newDesc
+    })
+
+    console.log("Document Changed")
+    res.redirect('/')
+
 })
 
 app.listen(3000)

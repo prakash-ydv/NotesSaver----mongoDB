@@ -13,12 +13,12 @@
 
       <div class="w-full flex flex-col gap-2 items-center mt-10 bg-zinc-800 p-5 rounded-md min-h-92 max-w-92">
 
-        <h1 class="text-md font-semibold text-zinc-200">Title Goes Here</h1>
+        <h1 class="text-md font-semibold text-zinc-200 uppercase"><%= data.title %></h1>
         <hr>
-
+         <span class="w-full h-[1px] bg-black"></span>
         <div class="w-full mt-2">
-            <p class="text-zinc-500 text-center">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda soluta culpa placeat.
+            <p class="text-zinc-500 text-sm text-center">
+                <%= data.desc %>
             </p>
         </div>
       </div>

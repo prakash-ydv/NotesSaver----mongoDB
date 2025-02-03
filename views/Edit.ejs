@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NotesSaver</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="min-h-screen bg-zinc-900 flex text-white flex-col items-center p-10">
+      <h1 class="text-yellow-500 font-bold text-2xl mb-2">NotesSaver</h1>
+
+      <div class="w-full flex flex-col gap-2 items-center mt-10 bg-zinc-800 p-5 rounded-md min-h-98 max-w-92">
+        <form action="/save/<%= data.title %>" method="POST" class="w-full">
+          <!-- Title Input -->
+          <input
+            class="text-md font-semibold text-zinc-200 uppercase outline-none text-center w-full mb-1"
+            type="text"
+            value="<%= data.title %>"
+            name="newTitle"
+          />
+          <hr />
+
+          <!-- Description Textarea -->
+          <textarea
+            class="w-full mt-2 resize-none min-h-62 outline-none text-xs text-zinc-400 p-2"
+            name="newDesc"
+          ><%= data.desc %></textarea>
+
+          <!-- Submit and Back Buttons -->
+          <div class="flex w-full gap-15 mx-auto items-center justify-center mt-5">
+            <input class="text-green-500 cursor-pointer" type="submit" value="Save" />
+            <a class="text-blue-500" href="/">Back</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

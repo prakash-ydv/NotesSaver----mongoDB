@@ -6,7 +6,7 @@
     <title>NotesSaver</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   </head>
-  <body>
+  <body class="bg-zinc-900">
     <div
       class="min-h-screen bg-zinc-900 flex text-white flex flex-col items-center p-10"
     >
@@ -32,7 +32,7 @@
         />
       </form>
 
-      <div class="mt-15 w-92 flex flex-wrap gap-2 md:w-3/4 mx-auto md:justify-evenly">
+      <div class="mt-15 w-86 flex flex-wrap gap-2 md:w-3/4 mx-auto md:justify-evenly">
         <% if(data.length>0){ %> 
             <% data.forEach((data)=>{ %>
 
